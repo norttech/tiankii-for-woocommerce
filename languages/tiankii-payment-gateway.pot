@@ -1,0 +1,111 @@
+# Copyright (C) 2024 tiankii
+# This file is distributed under the MIT.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tiankii Payment Gateway 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tiankii-payment-gateway\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-07-17T02:55:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: tiankii-payment-gateway\n"
+
+#. Plugin Name of the plugin
+#: tiankii-payment-gateway.php
+msgid "Tiankii Payment Gateway"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: tiankii-payment-gateway.php
+msgid "https://"
+msgstr ""
+
+#. Description of the plugin
+#: tiankii-payment-gateway.php
+msgid "Accept bitcoin lightning payments in one unified Tiankii Checkout."
+msgstr ""
+
+#. Author of the plugin
+#: tiankii-payment-gateway.php
+msgid "tiankii"
+msgstr ""
+
+#. Author URI of the plugin
+#: tiankii-payment-gateway.php
+msgid "https://pay.tiankii.com"
+msgstr ""
+
+#: tiankii-payment-gateway.php:66
+msgid "Bitcoin payments made easy. Accept lightning payments in one unified Tiankii Checkout experience."
+msgstr ""
+
+#: tiankii-payment-gateway.php:99
+#: tiankii-payment-gateway.php:141
+msgid "Tiankii"
+msgstr ""
+
+#: tiankii-payment-gateway.php:104
+msgid "Accept bitcoin lightning payments instantly through your hosted Tiankii Checkout. Enable the WooCommerce connection on the Tiankii Connectors page then paste the provided Store ID into the field below. <a href='https://pay.tiankii.com/stores#connectors' target='_blank' rel='noreferrer'>Setup Guide</a>"
+msgstr ""
+
+#: tiankii-payment-gateway.php:131
+msgid "Enable Tiankii Payments"
+msgstr ""
+
+#: tiankii-payment-gateway.php:132
+msgid "Enable payments via Tiankii Checkout."
+msgstr ""
+
+#: tiankii-payment-gateway.php:138
+msgid "Payment Method Name"
+msgstr ""
+
+#: tiankii-payment-gateway.php:140
+msgid "The payment method title which a customer sees at the checkout of your store."
+msgstr ""
+
+#: tiankii-payment-gateway.php:144
+msgid "Description"
+msgstr ""
+
+#: tiankii-payment-gateway.php:146
+msgid "The payment method description which a customer sees at the checkout of your store."
+msgstr ""
+
+#: tiankii-payment-gateway.php:147
+#: tiankii-payment-gateway.php:148
+msgid "Powered by Tiankii"
+msgstr ""
+
+#: tiankii-payment-gateway.php:152
+msgid "Show checkout Image"
+msgstr ""
+
+#: tiankii-payment-gateway.php:153
+msgid "Show Tiankii image on checkout"
+msgstr ""
+
+#: tiankii-payment-gateway.php:156
+msgid "yes"
+msgstr ""
+
+#: tiankii-payment-gateway.php:159
+msgid "Tiankii Store ID"
+msgstr ""
+
+#. translators: %s: URL to Woo store connection settings
+#: tiankii-payment-gateway.php:163
+msgid "Enter the Tiankii API Key from your <a href='%s' target='_blank' rel='noopener noreferrer'>Woo store connection settings</a>."
+msgstr ""
+
+#: tiankii-payment-gateway.php:383
+msgid "Settings"
+msgstr ""
+
+#: tiankii-payment-gateway.php:394
+msgid "Setup Guide"
+msgstr ""

@@ -4,7 +4,7 @@ Tags: payment, gateway, woocommerce, bitcoin, lightning
 Requires at least: 6.4.0
 Tested up to: 6.5.2
 Requires PHP: 7.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: MIT
 License URI: https://mit-license.org/
 
@@ -40,12 +40,16 @@ This plugin integrates seamlessly with your WooCommerce Checkout, providing a fa
 = 1.0.0 =
 * creates repository
 
+= 1.0.1 =
+* add assets files
 
 == Upgrade Notice ==
 
 = 1.0.0 =
-This update adds git repository.
+This update add git repository.
 
+= 1.0.1 =
+This update add assets files.
 
 == Support ==
 
