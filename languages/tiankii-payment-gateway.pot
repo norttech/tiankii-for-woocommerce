@@ -99,7 +99,7 @@ msgstr ""
 
 #. translators: %s: URL to Woo store connection settings
 #: tiankii-payment-gateway.php:163
-msgid "Enter the Tiankii API Key from your <a href='%s' target='_blank' rel='noopener noreferrer'>Woo store connection settings</a>."
+msgid "Enter the Tiankii Store id from your <a href='%s' target='_blank' rel='noopener noreferrer'>Woo store connection settings</a>."
 msgstr ""
 
 #: tiankii-payment-gateway.php:383

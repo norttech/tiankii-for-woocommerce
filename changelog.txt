@@ -1,0 +1,13 @@
+Tiankii Payment Gateway
+
+## [1.0.0] - 2024-07-17
+
+- creates repository.
+
+## [1.0.1] - 2024-07-17
+
+- feat: add assets files.
+
+## [1.0.2] - 2024-07-19
+
+- Initial release: Tiankii Payment Gateway with Bitcoin.
