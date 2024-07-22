@@ -11,3 +11,7 @@ Tiankii Payment Gateway
 ## [1.0.2] - 2024-07-19
 
 - Initial release: Tiankii Payment Gateway with Bitcoin.
+
+## [1.0.3] - 2024-07-22
+
+-feat: buyer data

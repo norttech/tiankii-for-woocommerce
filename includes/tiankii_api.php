@@ -20,8 +20,10 @@ class API {
 
 		error_log( "TIANKII: URL $this->api_url" );
 
-		$c     = new CurlWrapper();
-		$order = wc_get_order( $order_id );
+		$c     		 = new CurlWrapper();
+		$order 		 = wc_get_order( $order_id );
+		$billing 	 = $order->get_address( 'billing' );
+		$customer_id = $order->get_customer_id();
 
 		error_log( "TIANKII: amount in smallest unit $amount $currency" );
 
@@ -34,8 +36,21 @@ class API {
 		$site_url = site_url();
 
 		$posData = array(
-			'externalOrderId' => "$order_id",
-			'externalUniqId'  => $key
+			'order_id' => $order_id,
+			'uniq_key'  => $key
+		);
+
+		$buyer = array(
+			'customerId' 	=> "$customer_id",
+			'buyerName' 	=> $billing[ 'first_name' ] .' '. $billing[ 'last_name' ],
+			'buyerEmail' 	=> $billing[ 'email' ],
+			'buyerPhone' 	=> $billing[ 'phone' ],
+			'buyerCountry' 	=> $billing[ 'country' ],
+			'buyerZip' 		=> $billing[ 'postcode' ],
+			'buyerState' 	=> $billing[ 'state' ],
+			'buyerCity' 	=> $billing[ 'city' ],
+			'buyerAddress1' => $billing[ 'address_1' ],
+			'buyerAddress2' => $billing[ 'address_2' ] 
 		);
 
 		$metadata = array(
@@ -49,7 +64,8 @@ class API {
 			'amount'    => $amount,
 			'currency'  => $currency,
 			'storeId'   => trim($this->store_id),
-			'metadata'  => $metadata
+			'metadata'  => $metadata,
+			'buyer'		=> $buyer
 		);
 
 		$response = $c->post( "$this->api_url/v1/invoice", array(), json_encode( $data ), $headers );

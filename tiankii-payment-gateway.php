@@ -4,7 +4,7 @@
  * Plugin Name: Tiankii Payment Gateway
  * Plugin URI: https://github.com/TiankiiApp/tiankii-for-woocommerce
  * Description: Accept bitcoin lightning payments in one unified Tiankii Checkout.
- * Version: 1.0.1
+ * Version: 1.0.3
  * Author: tiankii
  * Author URI: https://pay.tiankii.com
  * Text Domain: tiankii-payment-gateway
@@ -212,19 +212,28 @@ function tiankii_server_init() {
 				error_log( "TIANKII: process_payment status $status" );
 
 				// Access the orderId field
-				$order_id = $r['response']['invoiceId'];
-				error_log( "invoiceId => $order_id" );
+				$invoice_id = $r['response']['invoiceId'];
+				error_log( "invoiceId => $invoice_id" );
 
 				// save tiankii metadata in woocommerce
-				$order->add_meta_data( 'tiankii_invoiceId', $order_id, true );
-				$order->add_meta_data( 'tiankii_order_link', "$tiankii_url/i/$order_id", true );
+				$order->add_meta_data( 'tiankii_invoiceId', $invoice_id, true );
+				$order->add_meta_data( 'tiankii_order_link', "$tiankii_url/i/$invoice_id", true );
+				//$order->update_status( 'processing', 'Send to Tiankii ckeckout', true );
 				$order->save();
 
-				$pay_code          = base64_encode(TIANKII_PAY_CODE);
+				$pay_code  = TIANKII_PAY_CODE;
+				$order_key = $order->get_order_key();
+				$pay_order  = array(
+					'order_id'  => "$order_id",
+					'order_key' => "$order_key",
+					'callback'  => home_url(),
+					'callCancel' => urlencode($order->get_cancel_order_url()) 
+				);
+				$pay_order_encode  = base64_encode(json_encode($pay_order));
 				$checkout_page_id  = get_option('woocommerce_checkout_page_id');
 				$checkout_page_url = get_permalink($checkout_page_id);
 				$back_url          = urlencode($checkout_page_url);
-				$redirect_url      = "$tiankii_pay_url/i/$order_id?backUrl=$back_url&payCode=$pay_code";
+				$redirect_url      = "$tiankii_pay_url/i/$invoice_id?backUrl=$back_url&payCode=$pay_code&payOrder=$pay_order_encode";
 				return array(
 					'result'   => 'success',
 					'redirect' => $redirect_url,
@@ -247,7 +256,7 @@ function tiankii_server_init() {
 		function tiankii_server_add_update_status_callback( $data ) {
 			error_log( 'TIANKII: webhook tiankii_server_add_update_status_callback' );
 			$order_id  = $data['id'];			
-			$store_id  = Utils::getAuthorizationHeader();
+			$store_id  = ''; //Utils::getAuthorizationHeader();
 			$api       = new API( $store_id );
 			$get_invoice_status = $api->check_invoice_status( $order_id );
 
@@ -290,10 +299,13 @@ function tiankii_server_init() {
 					error_log( "TIANKII: update status - $woo_order_status" );
 					
 					break;
+				case 'pending':
+					return new WP_REST_Response( 'Order still on pending.', 200 );
+					break;
 				default:
 					return new WP_REST_Response( 'Invalid order status.', 400 );
 			}
-			return new WP_REST_Response( 'Order status updated.', 200 );
+			return new WP_REST_Response();
 		}
 		add_action(
 			'rest_api_init',
@@ -327,8 +339,8 @@ function tiankii_server_init() {
 		);
 	}
 
-	 register_custom_rest_endpoints();
-
+	register_custom_rest_endpoints();
+	 
 	/**
 	 * Filters and Actions
 	 */
