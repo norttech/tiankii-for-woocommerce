@@ -78,7 +78,7 @@ final class WC_Gateway_Tiankii_Blocks_Support extends AbstractPaymentMethodType 
 	public function get_payment_method_data() {
 		return array(
 			'title'       => $this->gateway->get_option( 'title' ),
-			'description' => 'Powered by Tiankii', // TODO hardcode for now because it wont read from disabled setting
+			'description' => 'You will be redirected to tiankii checkout to complete your purchase.', // TODO hardcode for now because it wont read from disabled setting
 			'showImage'   => $this->gateway->get_option( 'payment_image' ),
 			'image'       => Utils::get_icon_image_url(),
 		);

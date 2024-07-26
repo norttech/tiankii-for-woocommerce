@@ -4,7 +4,7 @@
  * Plugin Name: Tiankii Payment Gateway
  * Plugin URI: https://github.com/TiankiiApp/tiankii-for-woocommerce
  * Description: Accept bitcoin lightning payments in one unified Tiankii Checkout.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: tiankii
  * Author URI: https://pay.tiankii.com
  * Text Domain: tiankii-payment-gateway
@@ -13,7 +13,7 @@
 
 add_action( 'plugins_loaded', 'tiankii_server_init' );
 
-define( 'TIANKII_APP_URL', getenv( 'TIANKII_APP_URL' ) ? getenv( 'TIANKII_APP_URL' ) : 'https://dev1.pay.tiankii.com' );
+define( 'TIANKII_APP_URL', getenv( 'TIANKII_APP_URL' ) ? getenv( 'TIANKII_APP_URL' ) : 'https://pay.tiankii.com' );
 define( 
 	'TIANKII_API_KEY', 
 	getenv( 
@@ -23,7 +23,7 @@ define(
 );
 
 define( 'TIANKII_API_URL', getenv( 'TIANKII_API_URL' ) ? 
-getenv( 'TIANKII_API_URL' ) : 'https://tk-api-dev-ezsqwhuiaa-uk.a.run.app' );
+getenv( 'TIANKII_API_URL' ) : 'https://tk-api-ezsqwhuiaa-uk.a.run.app' );
 
 define('TIANKII_PAY_URL', TIANKII_APP_URL);
 define('TIANKII_PAY_CODE', 'woo_commerce');
@@ -74,7 +74,7 @@ function tiankii_server_init() {
 			$this->init_settings();
 
 			$this->title       = $this->get_option( 'title' );
-			$this->description = 'Powered by Tiankii';
+			$this->description = 'The payment method description which a customer sees at the checkout of your store.';
 
 			$url     = $this->get_option( 'tiankii_server_url' );
 			$store_id = $this->get_option('tiankii_store_id');
@@ -143,15 +143,14 @@ function tiankii_server_init() {
 					'title'       => __('Payment Method Name', 'tiankii-payment-gateway'),
 					'type'        => 'text',
 					'description' => __('The payment method title which a customer sees at the checkout of your store.', 'tiankii-payment-gateway'),
-					'default'     => __('Tiankii', 'tiankii-payment-gateway'),
+					'default'     => __('Bitcoin Payment via tiankii ⚡️', 'tiankii-payment-gateway'),
 				),
 				'description'     => array(
 					'title'       => __('Description', 'tiankii-payment-gateway'),
 					'type'        => 'text',
 					'description' => __('The payment method description which a customer sees at the checkout of your store.', 'tiankii-payment-gateway'),
 					'placeholder' => __('Powered by Tiankii', 'tiankii-payment-gateway'),
-					'default'     => __('Powered by Tiankii', 'tiankii-payment-gateway'),
-					'disabled'    => true,
+					'default'     => __('You will be redirected to tiankii checkout to complete your purchase.', 'tiankii-payment-gateway')
 				),
 				'payment_image'   => array(
 					'title'       => __('Show checkout Image', 'tiankii-payment-gateway'),
@@ -165,8 +164,8 @@ function tiankii_server_init() {
 					'description' =>
 						sprintf(
 							/* translators: %s: URL to Woo store connection settings */
-							__("Enter the Tiankii StoreID from your <a href='%s' target='_blank' rel='noopener noreferrer'>Woo store connection settings</a>.", 'tiankii-payment-gateway'),
-							esc_url(TIANKII_APP_URL . '/stores')
+							__("Enter the Tiankii StoreID from your <a href='%s' target='_blank' rel='noopener noreferrer'>Tiankii connector settings</a>.", 'tiankii-payment-gateway'),
+							esc_url(TIANKII_APP_URL . '/connectors/woo_commerce')
 						),
 					'type'        => 'text',
 					'default'     => '',
@@ -252,7 +251,7 @@ function tiankii_server_init() {
 	/**
 	 * Custom REST Endpoints
 	 */
-	function register_custom_rest_endpoints() {
+	function register_custom_tiankii_rest_endpoints() {
 		function tiankii_server_add_update_status_callback( $data ) {
 			error_log( 'TIANKII: webhook tiankii_server_add_update_status_callback' );
 			$order_id  = $data['id'];			
@@ -339,12 +338,12 @@ function tiankii_server_init() {
 		);
 	}
 
-	register_custom_rest_endpoints();
+	register_custom_tiankii_rest_endpoints();
 	 
 	/**
 	 * Filters and Actions
 	 */
-	function register_filters_and_actions() {
+	function register_tiankii_filters_and_actions() {
 
 		// Settings Link
 		function tiankii_add_settings_link( $links ) {
@@ -380,7 +379,7 @@ function tiankii_server_init() {
 			curl_setopt( $handle, CURLOPT_TIMEOUT, 15 );
 		}
 
-		function add_custom_order_status() {
+		function add_custom_tiankii_order_status() {
 			register_post_status(
 				'wc-underpaid',
 				array(
@@ -419,7 +418,7 @@ function tiankii_server_init() {
 			);
 		}
 
-		function add_custom_order_statuses( $order_statuses ) {
+		function add_custom_tiankii_order_statuses( $order_statuses ) {
 			$new_order_statuses = array();
 			// add new order status after processing
 			foreach ( $order_statuses as $key => $status ) {
@@ -438,8 +437,8 @@ function tiankii_server_init() {
 		add_filter( 'plugin_row_meta', 'tiankii_add_meta_links', 10, 2 );
 		add_filter( 'http_request_args', 'tiankii_server_http_request_args', 100, 1 );
 		add_action( 'http_api_curl', 'tiankii_server_http_api_curl', 100, 1 );
-		add_action( 'init', 'add_custom_order_status' );
-		add_filter( 'wc_order_statuses', 'add_custom_order_statuses' );
+		add_action( 'init', 'add_custom_tiankii_order_status' );
+		add_filter( 'wc_order_statuses', 'add_custom_tiankii_order_statuses' );
 
 		if ( class_exists( '\Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
 			require_once __DIR__ . '/includes/blocks-checkout.php';
@@ -453,5 +452,5 @@ function tiankii_server_init() {
 		}
 	}
 
-	register_filters_and_actions();
+	register_tiankii_filters_and_actions();
 }

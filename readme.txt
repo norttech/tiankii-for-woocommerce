@@ -4,7 +4,7 @@ Tags: payment, gateway, woocommerce, bitcoin, lightning
 Requires at least: 6.4.0
 Tested up to: 6.5.2
 Requires PHP: 7.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: MIT
 License URI: https://mit-license.org/
 
@@ -56,6 +56,9 @@ Initial release.
 
 = 1.0.3 =
 Add buyer data.
+
+= 1.0.4 =
+Text changes
 
 == Support ==
 
