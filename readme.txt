@@ -55,6 +55,9 @@ This plugin integrates seamlessly with your WooCommerce Checkout, providing a fa
 = 1.0.5 =
 * Change title to 'Bitcoin Payments by tiankii'
 
+= 1.1.0 =
+* Add option to change order status
+
 == Upgrade Notice ==
 
 = 1.0.0 =
@@ -74,6 +77,9 @@ Text changes
 
 = 1.0.5 =
 Change title to 'Bitcoin Payments by tiankii'
+
+= 1.1.0 =
+Add option to change order status
 
 == Support ==
 

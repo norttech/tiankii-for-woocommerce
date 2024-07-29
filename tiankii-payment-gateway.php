@@ -4,7 +4,7 @@
  * Plugin Name: Bitcoin Payments by tiankii⚡️
  * Plugin URI: https://github.com/TiankiiApp/tiankii-for-woocommerce
  * Description: The easiest and fastest way to accept Bitcoin payments in your WooCommerce store.
- * Version: 1.0.5
+ * Version: 1.1.0
  * Author: tiankii
  * Author URI: https://pay.tiankii.com
  * Text Domain: tiankii-payment-gateway
@@ -131,6 +131,14 @@ function tiankii_server_init() {
 		 */
 		public function init_form_fields() {
 			$host = $_SERVER['HTTP_HOST'];
+			
+			// Get all order status
+			$order_statuses = wc_get_order_statuses();
+			$order_statuses_select = array();
+
+			foreach ($order_statuses as $status_key => $status_label) {
+				$order_statuses_select[$status_key] = $status_label;
+			}
 
 			$this->form_fields = array(
 				'enabled'         => array(
@@ -170,6 +178,13 @@ function tiankii_server_init() {
 						),
 					'type'        => 'text',
 					'default'     => '',
+				),
+				'completed_status' => array(
+					'title'        => __('Update paid orders to', 'tiankii-payment-gateway'),
+					'type'         => 'select',
+					'description'  => __('To update the order status upon receipt of payment in Tiankii, select the desired status that you would like to set in WordPress.', 'tiankii-payment-gateway'),
+					'default'      => 'wc-completed',
+					'options'      => $order_statuses_select,
 				),
 			);
 		}
@@ -275,11 +290,14 @@ function tiankii_server_init() {
 			error_log( "TIANKII: order status update from tiankii api - $invoice_status" );
 			$woo_order_status = Utils::convert_tiankii_order_status_to_woo_status( $invoice_status );
 			error_log( "TIANKII: wooStatus - $woo_order_status" );
-	
+
+			$gateway = new WC_Gateway_Tiankii_Server();
+			$completed_status =  $gateway->get_option('completed_status');
+
 			switch ( $woo_order_status ) {
 				case 'processing':
-					if (!$order->has_status( 'completed' ) ) {
-						$order->update_status( 'completed', 'Order status updated via API.', true );
+					if (!$order->has_status(str_replace('wc-', '', $completed_status))) {
+						$order->update_status( $completed_status, 'Order status updated via API.', true );
 						$order->add_order_note( 'Payment is settled.' );
 						$order->payment_complete();
 						$order->save();
