@@ -43,6 +43,18 @@ This plugin integrates seamlessly with your WooCommerce Checkout, providing a fa
 = 1.0.1 =
 * add assets files
 
+= 1.0.2 =
+* Initial release.
+
+= 1.0.3 =
+* Add buyer data.
+
+= 1.0.4 =
+* Text changes
+
+= 1.0.5 =
+* Change title to 'Bitcoin Payments by tiankii'
+
 == Upgrade Notice ==
 
 = 1.0.0 =
@@ -59,6 +71,9 @@ Add buyer data.
 
 = 1.0.4 =
 Text changes
+
+= 1.0.5 =
+Change title to 'Bitcoin Payments by tiankii'
 
 == Support ==
 

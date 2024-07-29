@@ -16,7 +16,7 @@ msgstr ""
 
 #. Plugin Name of the plugin
 #: tiankii-payment-gateway.php
-msgid "Tiankii Payment Gateway"
+msgid "Bitcoin Payments by tiankii⚡️"
 msgstr ""
 
 #. Plugin URI of the plugin
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: tiankii-payment-gateway.php
-msgid "Accept bitcoin lightning payments in one unified Tiankii Checkout."
+msgid "The easiest and fastest way to accept Bitcoin payments in your WooCommerce store."
 msgstr ""
 
 #. Author of the plugin

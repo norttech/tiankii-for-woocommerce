@@ -18,3 +18,6 @@ Tiankii Payment Gateway
 
 ## [1.0.4] - 2024-07-26
 -Text changes
+
+## [1.0.5] - 2024-07-29
+-Change title

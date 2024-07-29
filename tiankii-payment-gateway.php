@@ -1,10 +1,10 @@
 <?php
 
 /*
- * Plugin Name: Tiankii Payment Gateway
+ * Plugin Name: Bitcoin Payments by tiankii⚡️
  * Plugin URI: https://github.com/TiankiiApp/tiankii-for-woocommerce
- * Description: Accept bitcoin lightning payments in one unified Tiankii Checkout.
- * Version: 1.0.4
+ * Description: The easiest and fastest way to accept Bitcoin payments in your WooCommerce store.
+ * Version: 1.0.5
  * Author: tiankii
  * Author URI: https://pay.tiankii.com
  * Text Domain: tiankii-payment-gateway
@@ -130,6 +130,7 @@ function tiankii_server_init() {
 		 * Generate config form fields, shown in admin->WooCommerce->Settings.
 		 */
 		public function init_form_fields() {
+			$host = $_SERVER['HTTP_HOST'];
 
 			$this->form_fields = array(
 				'enabled'         => array(
@@ -165,7 +166,7 @@ function tiankii_server_init() {
 						sprintf(
 							/* translators: %s: URL to Woo store connection settings */
 							__("Enter the Tiankii StoreID from your <a href='%s' target='_blank' rel='noopener noreferrer'>Tiankii connector settings</a>.", 'tiankii-payment-gateway'),
-							esc_url(TIANKII_APP_URL . '/connectors/woo_commerce')
+							esc_url(TIANKII_APP_URL . '/connectors/woo_commerce?wp_address=' . $host)
 						),
 					'type'        => 'text',
 					'default'     => '',
