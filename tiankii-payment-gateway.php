@@ -2,9 +2,9 @@
 
 /*
  * Plugin Name: Bitcoin Payments by tiankii⚡️
- * Plugin URI: https://github.com/TiankiiApp/tiankii-for-woocommerce
+ * Plugin URI: https://github.com/norttech/tiankii-for-woocommerce
  * Description: The easiest and fastest way to accept Bitcoin payments in your WooCommerce store.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author: tiankii
  * Author URI: https://pay.tiankii.com
  * Text Domain: tiankii-payment-gateway
@@ -107,7 +107,7 @@ function tiankii_server_init() {
 				<?php
 					echo wp_kses(
 						__(
-							"Accept bitcoin lightning payments instantly through your hosted Tiankii Checkout. Enable the Woo connection on the Tiankii Connectors page then paste the provided storeID into the field below. <a href='https://' target='_blank' rel='noreferrer'>Setup Guide</a>",
+							"Accept bitcoin lightning payments instantly through your hosted Tiankii Checkout. Enable the Woo connection on the Tiankii Connectors page then paste the provided storeID into the field below. <a href='https://help.tiankii.com/portal/en/kb/articles/enable-bitcoin-payments-on-woocomerce-via-tiankii#Requirements' target='_blank' rel='noreferrer'>Setup Guide</a>",
 							'tiankii-payment-gateway'
 						),
 						array(
@@ -173,8 +173,8 @@ function tiankii_server_init() {
 					'description' =>
 						sprintf(
 							/* translators: %s: URL to Woo store connection settings */
-							__("Enter the Tiankii StoreID from your <a href='%s' target='_blank' rel='noopener noreferrer'>Tiankii connector settings</a>.", 'tiankii-payment-gateway'),
-							esc_url(TIANKII_APP_URL . '/connectors/woo_commerce?wp_address=' . $host)
+							__("Click on the Link to Get your Store ID, then Login or Create your Tiankii Account <a href='%s' target='_blank' rel='noopener noreferrer'>Tiankii connector settings</a>.", 'tiankii-payment-gateway'),
+							esc_url(TIANKII_APP_URL . '/connectors/woo_commerce?wp_address=' . $host. '&reconnect=true')
 						),
 					'type'        => 'text',
 					'default'     => '',
@@ -182,7 +182,7 @@ function tiankii_server_init() {
 				'completed_status' => array(
 					'title'        => __('Update paid orders to', 'tiankii-payment-gateway'),
 					'type'         => 'select',
-					'description'  => __('To update the order status upon receipt of payment in Tiankii, select the desired status that you would like to set in WordPress.', 'tiankii-payment-gateway'),
+					'description'  => __('Upon receiving the Bitcoin payment in your wallet, select the desired WooCommerce Order Status that you would like to set in your store.', 'tiankii-payment-gateway'),
 					'default'      => 'wc-completed',
 					'options'      => $order_statuses_select,
 				),
@@ -377,7 +377,7 @@ function tiankii_server_init() {
 			if ( $file == $plugin_base ) {
 				// Add your custom links
 				$new_links = array(
-					'<a href="https://">' . __( 'Setup Guide', 'tiankii-payment-gateway' ) . '</a>',
+					'<a href="https://help.tiankii.com/portal/en/kb/articles/enable-bitcoin-payments-on-woocomerce-via-tiankii#Requirements">' . __( 'Setup Guide', 'tiankii-payment-gateway' ) . '</a>',
 					// Add more links as needed
 				);
 				$links = array_merge( $links, $new_links );

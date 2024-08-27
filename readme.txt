@@ -58,6 +58,9 @@ This plugin integrates seamlessly with your WooCommerce Checkout, providing a fa
 = 1.1.0 =
 * Add option to change order status
 
+= 1.1.1 =
+* Languages file updated
+
 == Upgrade Notice ==
 
 = 1.0.0 =
@@ -81,13 +84,20 @@ Change title to 'Bitcoin Payments by tiankii'
 = 1.1.0 =
 Add option to change order status
 
+= 1.1.1 =
+Language file updated with recent changes
+
 == Support ==
 
-For support and feature requests, please visit [https://).
+For support and feature requests, please visit [https://help.tiankii.com/portal/es/home).
 
 == Additional Notes ==
 
 Tiankii is not affiliated with or endorsed by WooCommerce or WordPress. This plugin is developed and maintained by Tiankii.
+
+== Frequently Asked Questions ==
+
+See our blog post for FAQ's [How To Connect Your WooCommerce Store/](https://help.tiankii.com/portal/en/kb/articles/enable-bitcoin-payments-on-woocomerce-via-tiankii#Requirements). 
 
 == Screenshots ==
 

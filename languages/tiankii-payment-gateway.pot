@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: tiankii-payment-gateway.php
-msgid "https://"
+msgid "https://github.com/norttech/tiankii-for-woocommerce"
 msgstr ""
 
 #. Description of the plugin
@@ -39,73 +39,84 @@ msgstr ""
 msgid "https://pay.tiankii.com"
 msgstr ""
 
-#: tiankii-payment-gateway.php:66
+#: tiankii-payment-gateway.php:71
 msgid "Bitcoin payments made easy. Accept lightning payments in one unified Tiankii Checkout experience."
 msgstr ""
 
-#: tiankii-payment-gateway.php:99
-#: tiankii-payment-gateway.php:141
+#: tiankii-payment-gateway.php:104
 msgid "Tiankii"
 msgstr ""
 
-#: tiankii-payment-gateway.php:104
-msgid "Accept bitcoin lightning payments instantly through your hosted Tiankii Checkout. Enable the WooCommerce connection on the Tiankii Connectors page then paste the provided Store ID into the field below. <a href='https://pay.tiankii.com/stores#connectors' target='_blank' rel='noreferrer'>Setup Guide</a>"
-msgstr ""
-
-#: tiankii-payment-gateway.php:131
-msgid "Enable Tiankii Payments"
-msgstr ""
-
-#: tiankii-payment-gateway.php:132
-msgid "Enable payments via Tiankii Checkout."
-msgstr ""
-
-#: tiankii-payment-gateway.php:138
-msgid "Payment Method Name"
-msgstr ""
-
-#: tiankii-payment-gateway.php:140
-msgid "The payment method title which a customer sees at the checkout of your store."
-msgstr ""
-
-#: tiankii-payment-gateway.php:144
-msgid "Description"
+#: tiankii-payment-gateway.php:110
+msgid "Accept bitcoin lightning payments instantly through your hosted Tiankii Checkout. Enable the Woo connection on the Tiankii Connectors page then paste the provided storeID into the field below. <a href='https://help.tiankii.com/portal/en/kb/articles/enable-bitcoin-payments-on-woocomerce-via-tiankii#Requirements' target='_blank' rel='noreferrer'>Setup Guide</a>"
 msgstr ""
 
 #: tiankii-payment-gateway.php:146
+msgid "Enable payments via tiankii Checkout."
+msgstr ""
+
+#: tiankii-payment-gateway.php:152
+msgid "Payment Method Name"
+msgstr ""
+
+#: tiankii-payment-gateway.php:154
+msgid "The payment method title which a customer sees at the checkout of your store."
+msgstr ""
+
+#: tiankii-payment-gateway.php:155
+msgid "Bitcoin Payment via tiankii ⚡️"
+msgstr ""
+
+#: tiankii-payment-gateway.php:158
+msgid "Description"
+msgstr ""
+
+#: tiankii-payment-gateway.php:160
 msgid "The payment method description which a customer sees at the checkout of your store."
 msgstr ""
 
-#: tiankii-payment-gateway.php:147
+#: tiankii-payment-gateway.php:161
 #: tiankii-payment-gateway.php:148
 msgid "Powered by Tiankii"
 msgstr ""
 
-#: tiankii-payment-gateway.php:152
+#: tiankii-payment-gateway.php:162
+msgid "You will be redirected to tiankii checkout to complete your purchase."
+msgstr ""
+
+#: tiankii-payment-gateway.php:165
 msgid "Show checkout Image"
 msgstr ""
 
-#: tiankii-payment-gateway.php:153
+#: tiankii-payment-gateway.php:166
 msgid "Show Tiankii image on checkout"
 msgstr ""
 
-#: tiankii-payment-gateway.php:156
+#: tiankii-payment-gateway.php:169
 msgid "yes"
 msgstr ""
 
-#: tiankii-payment-gateway.php:159
-msgid "Tiankii Store ID"
+#: tiankii-payment-gateway.php:172
+msgid "Tiankii StoreID"
 msgstr ""
 
 #. translators: %s: URL to Woo store connection settings
-#: tiankii-payment-gateway.php:163
-msgid "Enter the Tiankii Store id from your <a href='%s' target='_blank' rel='noopener noreferrer'>Woo store connection settings</a>."
+#: tiankii-payment-gateway.php:176
+msgid "Click on the Link to Get your Store ID, then Login or Create your Tiankii Account <a href='%s' target='_blank' rel='noopener noreferrer'>Tiankii connector settings</a>."
 msgstr ""
 
-#: tiankii-payment-gateway.php:383
-msgid "Settings"
+#: tiankii-payment-gateway.php:183
+msgid "Update paid orders to"
 msgstr ""
 
-#: tiankii-payment-gateway.php:394
+#: tiankii-payment-gateway.php:185
+msgid "Upon receiving the Bitcoin payment in your wallet, select the desired WooCommerce Order Status that you would like to set in your store."
+msgstr ""
+
+#: tiankii-payment-gateway.php:380
 msgid "Setup Guide"
+msgstr ""
+
+#: tiankii-payment-gateway.php:369
+msgid "Settings"
 msgstr ""
